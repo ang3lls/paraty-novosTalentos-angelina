@@ -14,13 +14,13 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @Column(name = "NOME")
+   // @Column(name = "NOME")
     private String name;
 
-    @Column(name = "IDADE")
+    //@Column(name = "IDADE")
     private int idade;
 
-    @Column(name = "EMAIL")
+    //@Column(name = "EMAIL")
     private String email;
 
 }

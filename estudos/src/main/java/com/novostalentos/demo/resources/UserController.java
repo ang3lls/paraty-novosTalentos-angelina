@@ -17,8 +17,9 @@ public class UserController {
     UserRepository userRepository;
 
     @PostMapping("/save")
-    public void save(@RequestBody User user){
+    public ResponseEntity<User>  save(@RequestBody User user){
         userRepository.save(user);
+        return ResponseEntity.status(HttpStatus.CREATED).body(user);
     }
 
     @GetMapping("/find/{id}")
@@ -28,7 +29,7 @@ public class UserController {
     }
 
     @GetMapping("/find-all")
-    public List findAll(){
+    public List<User> findAll(){
         return userRepository.findAll();
     }
 
@@ -43,8 +44,8 @@ public class UserController {
                 }).orElse(ResponseEntity.notFound().build());
     }
 
-    @DeleteMapping("/delete/user")
-    public ResponseEntity<Object> delete(@PathVariable int id) {
+    @DeleteMapping(path ={"/delete/{id}"})
+    public ResponseEntity<?> delete(@PathVariable int id) {
         return userRepository.findById(id)
                 .map(record -> {
                     userRepository.deleteById(id);
