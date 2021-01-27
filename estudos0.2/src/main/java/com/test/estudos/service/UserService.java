@@ -35,8 +35,7 @@ public class UserService {
     //}
 
     public User alteracao(int id, User user) {
-        verificaExistencia(id);
-        User userAtualizado = buscarID(id);
+        User userAtualizado = verificaExistencia(id);
         userAtualizado.setIdade(user.getIdade());
         userAtualizado.setEmail(user.getEmail());
         return salvar(userAtualizado);
