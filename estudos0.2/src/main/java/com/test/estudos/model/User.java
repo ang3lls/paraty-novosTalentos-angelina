@@ -11,6 +11,7 @@ import javax.validation.constraints.NotEmpty;
 @Entity
 public class User implements AutoCloseable{
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
@@ -27,8 +28,12 @@ public class User implements AutoCloseable{
     //@Column(name = "EMAIL")
     private String email;
 
+    public User(int id, String name, int idade, String email) {
+    }
+
+
     @Override
     public void close() throws Exception {
-
     }
+
 }
