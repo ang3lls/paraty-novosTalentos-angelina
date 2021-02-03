@@ -1,6 +1,6 @@
 package controllerTest;
 
-import Templates.UserBuilder;
+import templates.UserBuilder;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.test.estudos.EstudosApplication;
 import com.test.estudos.model.User;
@@ -17,7 +17,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import java.util.Arrays;
 import java.util.List;
 
 import static org.mockito.Mockito.when;

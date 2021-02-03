@@ -1,14 +1,11 @@
-package Templates;
+package templates;
 
 import com.test.estudos.model.User;
 
-public class UserBuilder{
+import java.util.Arrays;
+import java.util.List;
 
-  /**
-   * Essa é a classe que te falei para ser template.
-   * tudo que vc precisar sobre a classe User vc cria aqui dentro
-   * forma mais limpa de escrever pois se vc precisar alterar algo ta tudo aqui dentro.
-   */
+public class UserBuilder{
 
   public static User getUser(){
     return new User( 1, "Ana", 25, "ana@cadmus.com.br");

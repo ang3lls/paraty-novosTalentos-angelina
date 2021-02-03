@@ -1,15 +1,13 @@
 package com.test.estudos.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 
-// O @Data já contempla o @Getter e @Setter dentro dele... então nos nossos projetos vc vai ver muito ele.
 @Data
-//@Getter
-//@Setter
 @Entity
 public class User implements AutoCloseable{
 

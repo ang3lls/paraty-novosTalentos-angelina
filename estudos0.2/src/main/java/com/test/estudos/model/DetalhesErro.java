@@ -1,12 +1,12 @@
 package com.test.estudos.model;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 
 
-@Getter
-@Setter
+@Data
 public class DetalhesErro {
 
     private String titulo;
