@@ -1,5 +1,6 @@
 package controllerTest;
 
+import Templates.UserBuilder;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.test.estudos.EstudosApplication;
 import com.test.estudos.model.User;
@@ -41,7 +42,7 @@ public class UserControllerTest {
 
     @Test
     public void deveCriarNovoUser() throws Exception {
-        User user = new User( 1, "Ana", 25, "ana@cadmus.com.br");
+        User user = UserBuilder.getUser();
         mockMvc.perform(MockMvcRequestBuilders.post("/crud/save")
                 .contentType("application/json")
                 .content(objectMapper.writeValueAsString(user)))
@@ -50,8 +51,9 @@ public class UserControllerTest {
 
     @Test
     public void deveBuscarUserPeloId() throws Exception{
-        User user = new User( 2, "Malone", 25, "post.malone@cadmus.com.br");
-        when(userService.buscarID(2)).thenReturn(user);
+        User user = UserBuilder.getUser();
+        when(userService.buscarID(user.getId())).thenReturn(user);
+
         mockMvc.perform(MockMvcRequestBuilders.get("/crud/find/{id}",2)
                 .contentType("application/json")
                 .content(objectMapper.writeValueAsString(user)))
@@ -60,9 +62,7 @@ public class UserControllerTest {
 
     @Test
     public void deveBuscarTodos() throws Exception {
-        List<User> users = Arrays.asList(
-                new User( 3, "rafaela", 20, "rafaela@cadmus.com.br"),
-                new User(4, "Rafa", 20, "rafa@cadmus.com.br"));
+        List<User> users = UserBuilder.getUsers();
         when(userRepo.findAll()).thenReturn(users);
         mockMvc.perform(MockMvcRequestBuilders.get("/crud/find-all"))
                 .andExpect(status().isOk());
@@ -70,7 +70,7 @@ public class UserControllerTest {
 
     @Test
     public void deveAlterarDadosDoUser() throws Exception{
-        User user = new User( 5, "angelina", 19, "angelina@cadmus.com.br");
+        User user = UserBuilder.getUser();
         when(userService.buscarID(user.getId())).thenReturn(user);
         user.setIdade(20);
         when(userService.alteracao(5, user)).thenReturn(user);

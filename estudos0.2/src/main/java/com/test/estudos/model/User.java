@@ -6,8 +6,10 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 
-@Getter
-@Setter
+// O @Data já contempla o @Getter e @Setter dentro dele... então nos nossos projetos vc vai ver muito ele.
+@Data
+//@Getter
+//@Setter
 @Entity
 public class User implements AutoCloseable{
 

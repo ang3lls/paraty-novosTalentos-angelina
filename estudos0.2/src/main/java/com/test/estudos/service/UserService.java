@@ -29,11 +29,6 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    //public User alteracao(int id, User user){
-    //    user.setId(id);
-    //    return salvar(user);
-    //}
-
     public User alteracao(int id, User user) {
         User userAtualizado = verificaExistencia(id);
         userAtualizado.setIdade(user.getIdade());

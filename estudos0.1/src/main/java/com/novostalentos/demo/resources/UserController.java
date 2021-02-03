@@ -13,7 +13,11 @@ import java.util.List;
 @RequestMapping("/crud")
 public class UserController {
 
-    @Autowired
+  /**
+   * Toodos esses meu comentários é pra vc entender o que eu penso sobre... vc pode deletar depois tá!
+   */
+
+  @Autowired
     UserRepository userRepository;
 
     @PostMapping("/save")
@@ -35,6 +39,9 @@ public class UserController {
 
     @PutMapping("/update/{id}")
     public ResponseEntity update(@PathVariable("id") int id, @RequestBody User user) {
+      /**
+       *  O mesmo se aplica aqui no update o assunto do DELETE. Não está errado, porém existe varias situações e diferentes formas de fazer.
+       */
         return userRepository.findById(id)
                 .map(record -> {
                     record.setIdade(user.getIdade());
@@ -44,8 +51,20 @@ public class UserController {
                 }).orElse(ResponseEntity.notFound().build());
     }
 
-    @DeleteMapping(path ={"/delete/{id}"})
+
+  /**
+   * Esse tipo de bloco de código só necessário quando o metodo tem uma regra muito complexa ai vc precisa explicar cada parâmetro
+   * Na real o padrão clean code o nome tanto dos parametros quanto do metodo deve ser auto explicativo.
+   * @param id id sequencia registrado no branco
+   * @return returno do metodo para qualquer eventualidade: sucesso ou erro!
+   */
+  @DeleteMapping(path ={"/delete/{id}"})
     public ResponseEntity<?> delete(@PathVariable int id) {
+    /**
+     * Não tem problema a forma como está é mais uma garantia que irá existir o registro, porém não há necessidade de buscar
+     * o registro no banco de dados para efetuar o delete. Se você já está chamando o metodo para deletar é porque já
+     * existe a informação no banco.
+     */
         return userRepository.findById(id)
                 .map(record -> {
                     userRepository.deleteById(id);

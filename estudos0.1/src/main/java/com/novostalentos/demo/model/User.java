@@ -5,8 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 import javax.persistence.*;
 
-@Getter
-@Setter
+// O @Getter e @Setter já existem dentro do @Data então precisa anotar a classe com eles!
+@Data
 @Entity
 public class User {
 
