@@ -29,8 +29,11 @@ public class User implements AutoCloseable{
     private String email;
 
     public User(int id, String name, int idade, String email) {
+        this.id = id;
+        this.name= name;
+        this.idade = idade;
+        this.email = email;
     }
-
 
     @Override
     public void close() throws Exception {
